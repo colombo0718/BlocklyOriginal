@@ -19,55 +19,88 @@
 			position:absolute;
 			top:0%;
 			left:60%;
-			height: 60%;
-			width:40%;
-		}
-		div#term{
-			position:absolute;
-			top:60%;
-			left:60%;
-			height: 40%;
+			height: 100%;
 			width:40%;
 		}		
 	</style>
 </head>
 <body>
 	<xml id="toolbox" style="display: none">
-		<category name="Logic">
-			<category name="If">
-				<block type="controls_if"></block>
-				<block type="controls_if">
-					<mutation else="1"></mutation>
-				</block>
-				<block type="controls_if">
-					<mutation elseif="1" else="1"></mutation>
-				</block>
-			</category>
-			<category name="Boolean">
-				<block type="logic_compare"></block>
-				<block type="logic_operation"></block>
-				<block type="logic_negate"></block>
-				<block type="logic_boolean"></block>
-				<block type="logic_null"></block>
-				<block type="logic_ternary"></block>
-			</category>
+		<category name="Logic" colour="210">
+			<block type="controls_if"></block>
+			<block type="logic_boolean"></block>
+			<block type="logic_compare"></block>
+			<block type="logic_operation"></block>
+			<block type="logic_negate"></block>
+			<block type="logic_null"></block>
+			<block type="logic_ternary"></block>
+		</category>
+		<category name="Loops">
+			<block type="controls_repeat_ext"></block>
+			<block type="controls_whileUntil"></block>
+			<block type="controls_for"></block>
+			<block type="controls_forEach"></block>
+			<block type="controls_flow_statements"></block>
 		</category>
 		<category name="Math">
 			<block type="math_number"></block>
 			<block type="math_arithmetic"></block>
 			<block type="math_single"></block>
+			<block type="math_trig"></block>
+			<block type="math_constant"></block>
+			<block type="math_number_property"></block>
+			<block type="math_change"></block>
+			<block type="math_round"></block>
+			<block type="math_on_list"></block>
+			<block type="math_modulo"></block>
+			<block type="math_constrain"></block>
+			<block type="math_random_int"></block>
+			<block type="math_random_float"></block>
 		</category>	
 		<category name="Text">
 			<block type="text"></block>
 			<block type="text_join"></block>
+			<block type="text_append"></block>
+			<block type="text_length"></block>
+			<block type="text_isEmpty"></block>
+			<block type="text_indexOf"></block>
+			<block type="text_charAt"></block>
+			<block type="text_getSubstring"></block>
+			<block type="text_changeCase"></block>
+			<block type="text_trim"></block>
+			<block type="text_print"></block>
+			<block type="text_prompt_ext"></block>
+			<block type="text_prompt"></block>
+			<block type="text_count"></block>
+			<block type="text_replace"></block>
+			<block type="text_reverse"></block>
 		</category>	
+		<category name="Lists">
+			<block type="lists_create_empty"></block>
+			<block type="lists_repeat"></block>
+			<block type="lists_reverse"></block>
+			<block type="lists_isEmpty"></block>
+			<block type="lists_length"></block>
+			<block type="lists_create_with"></block>
+			<block type="lists_indexOf"></block>
+			<block type="lists_getIndex"></block>
+			<block type="lists_setIndex"></block>
+			<block type="lists_getSublist"></block>
+			<block type="lists_sort"></block>
+			<block type="lists_split"></block>
+		</category>
+		<category name="colour">
+			<block type="colour_picker"></block>
+			<block type="colour_random"></block>
+			<block type="colour_rgb"></block>
+			<block type="colour_blend"></block>
+		</category>
 		<category name="Variables" custom="VARIABLE"></category>
     	<category name="Functions" custom="PROCEDURE"></category>
 	</xml>
 <!-- ======================================== -->
 	<div id='bloc'></div>
 	<div id='code'></div>
-	<div id='term'></div>
 
 <script>
 	var workspace = Blockly.inject('bloc',
@@ -78,12 +111,9 @@
 
 	var editor = ace.edit("code");
 	editor.setTheme("ace/theme/twilight");
-	editor.getSession().setMode("ace/mode/javascript");	
-	editor.setReadOnly(true)
-
-	var editor = ace.edit("term");
-	editor.setTheme("ace/theme/twilight");
+	// editor.setTheme("ace/theme/chaos");
 	editor.getSession().setMode("ace/mode/javascript");	
 	editor.setReadOnly(true)	
 </script>		
 </body>	
+</html>
