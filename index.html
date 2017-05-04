@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Blockly Original</title>
+	<script src="https://blockly-demo.appspot.com/static/blockly_compressed.js"></script>
+	<script src="https://blockly-demo.appspot.com/static/blocks_compressed.js"></script>
+	<script src="https://blockly-demo.appspot.com/static/javascript_compressed.js"></script>
+	<script src="https://blockly-demo.appspot.com/static/msg/js/en.js"></script>
+	<script src="https://ace.c9.io/build/src/ace.js"></script>
+	<style>
+		div#bloc{
+			position:absolute;
+			top:0%;
+			left:0%;
+			height: 100%;
+			width:60%;
+		}
+		div#code{
+			position:absolute;
+			top:0%;
+			left:60%;
+			height: 60%;
+			width:40%;
+		}
+		div#term{
+			position:absolute;
+			top:60%;
+			left:60%;
+			height: 40%;
+			width:40%;
+		}		
+	</style>
+</head>
+<body>
+	<xml id="toolbox" style="display: none">
+		<category name="Logic">
+			<category name="If">
+				<block type="controls_if"></block>
+				<block type="controls_if">
+					<mutation else="1"></mutation>
+				</block>
+				<block type="controls_if">
+					<mutation elseif="1" else="1"></mutation>
+				</block>
+			</category>
+			<category name="Boolean">
+				<block type="logic_compare"></block>
+				<block type="logic_operation"></block>
+				<block type="logic_negate"></block>
+				<block type="logic_boolean"></block>
+				<block type="logic_null"></block>
+				<block type="logic_ternary"></block>
+			</category>
+		</category>
+		<category name="Math">
+			<block type="math_number"></block>
+			<block type="math_arithmetic"></block>
+			<block type="math_single"></block>
+		</category>	
+		<category name="Text">
+			<block type="text"></block>
+			<block type="text_join"></block>
+		</category>	
+		<category name="Variables" custom="VARIABLE"></category>
+    	<category name="Functions" custom="PROCEDURE"></category>
+	</xml>
+<!-- ======================================== -->
+	<div id='bloc'></div>
+	<div id='code'></div>
+	<div id='term'></div>
+
+<script>
+	var workspace = Blockly.inject('bloc',
+	{	
+		toolbox: document.getElementById('toolbox'),
+		zoom:{controls: true,startScale: 0.8},
+	});
+
+	var editor = ace.edit("code");
+	editor.setTheme("ace/theme/twilight");
+	editor.getSession().setMode("ace/mode/javascript");	
+	editor.setReadOnly(true)
+
+	var editor = ace.edit("term");
+	editor.setTheme("ace/theme/twilight");
+	editor.getSession().setMode("ace/mode/javascript");	
+	editor.setReadOnly(true)	
+</script>		
+</body>	
