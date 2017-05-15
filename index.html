@@ -6,6 +6,8 @@
 	<script src="https://blockly-demo.appspot.com/static/blocks_compressed.js"></script>
 	<script src="https://blockly-demo.appspot.com/static/javascript_compressed.js"></script>
 	<script src="https://blockly-demo.appspot.com/static/msg/js/en.js"></script>
+	<script src="blocks_original.js"></script>
+	<script src="generator_original.js"></script>
 	<script src="https://ace.c9.io/build/src/ace.js"></script>
 	<style>
 		div#bloc{
@@ -26,7 +28,7 @@
 </head>
 <body>
 	<xml id="toolbox" style="display: none">
-		<category name="Logic" colour="210">
+		<category name="Logic">
 			<block type="controls_if"></block>
 			<block type="logic_boolean"></block>
 			<block type="logic_compare"></block>
@@ -97,6 +99,9 @@
 		</category>
 		<category name="Variables" custom="VARIABLE"></category>
     	<category name="Functions" custom="PROCEDURE"></category>
+    	<category name="Javascript" colour="210">
+    		<block type="consloe.log"></block>
+    	</category>
 	</xml>
 <!-- ======================================== -->
 	<div id='bloc'></div>
@@ -111,9 +116,24 @@
 
 	var editor = ace.edit("code");
 	editor.setTheme("ace/theme/twilight");
-	// editor.setTheme("ace/theme/chaos");
 	editor.getSession().setMode("ace/mode/javascript");	
-	editor.setReadOnly(true)	
-</script>		
+	editor.setReadOnly(true)
+	editor.$blockScrolling = Infinity;	
+	document.getElementById('code').style.fontSize='14px';
+
+	var jsCode='';
+	workspace.addChangeListener(function(event){
+		jsCode = Blockly.JavaScript.workspaceToCode(workspace)
+		editor.setValue(jsCode);
+		// console.log(event.type)
+	})
+
+	document.addEventListener("keypress", function(event){
+		if(event.key=='Enter'){
+			console.clear()
+			eval(jsCode)
+		}
+	})
+</script>	
 </body>	
 </html>
